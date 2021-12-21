@@ -396,7 +396,8 @@ int esp_supplicant_post_evt(uint32_t evt_id, uint32_t data)
 		os_free(evt);
 		return -1;
 	}
-	SUPPLICANT_API_UNLOCK();
+        if (evt_id!=SIG_SUPPLICANT_DEL_TASK)
+                SUPPLICANT_API_UNLOCK();
 	return 0;
 }
 
